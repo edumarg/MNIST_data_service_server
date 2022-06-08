@@ -12,8 +12,9 @@ images, labels = mndata.load_training()
 @app.route("/images", methods={"GET"})
 def getImages():
     send_images = []
-    number = int(request.args.get("number", default=10))
+    number = int(request.args.get("quantity", default=10))
     for i in range(number):
+        print(i)
         send_images.append(images[i])
     response = app.response_class(response=json.dumps(send_images), status=200, mimetype="application/json")
     return response
